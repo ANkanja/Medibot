@@ -1,0 +1,86 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "sample-questionnaire",
+  "title": "Sample Patient Information",
+  "status": "active",
+  "item": [
+    {
+      "linkId": "1",
+      "text": "Personal Information",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "1.1",
+          "text": "What is your full name?",
+          "type": "string",
+          "required": true
+        },
+        {
+          "linkId": "1.2",
+          "text": "What is your date of birth?",
+          "type": "date",
+          "required": true
+        },
+        {
+          "linkId": "1.3",
+          "text": "What is your gender?",
+          "type": "choice",
+          "required": true,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "male",
+                "display": "Male"
+              }
+            },
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "female",
+                "display": "Female"
+              }
+            },
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "other",
+                "display": "Other"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "2",
+      "text": "Medical History",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "2.1",
+          "text": "Do you have any allergies?",
+          "type": "boolean"
+        },
+        {
+          "linkId": "2.2",
+          "text": "If yes, please describe your allergies:",
+          "type": "text",
+          "enableWhen": [
+            {
+              "question": "2.1",
+              "operator": "=",
+              "answerBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "2.3",
+          "text": "Rate your current pain level (0-10):",
+          "type": "integer",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
